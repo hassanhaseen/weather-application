@@ -5,23 +5,22 @@ document.addEventListener("DOMContentLoaded", function () {
         getWeather();
     });
 
-    function getWeather() {
+    async function getWeather() {
         const city = document.getElementById('cityInput').value;
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                updateWeatherInfo(data);
-            })
-            .catch(error => {
-                console.error('There was a problem with your fetch operation:', error);
-            });
+        
+        try{
+            let weatherData = await fetch(apiUrl)
+            weatherData = await weatherData.json()
+            console.log(weatherData);
+            updateWeatherInfo(weatherData);
+        }
+        catch(e){
+            document.getElementById("invalidInput").style.display="block";
+            setTimeout(() => {
+                document.getElementById("invalidInput").style.display="none";
+            }, 1000);
+        }
     }
 
     function updateWeatherInfo(data) {
