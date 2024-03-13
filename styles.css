@@ -18,9 +18,16 @@ body {
     text-align: center;
 }
 
-h1{
+h1 {
     color: #fff;
     margin: 8px 0;
+    background: hsla(120, 6%, 90%, 1);
+    background: linear-gradient(45deg, hsla(120, 6%, 90%, 1) 0%, rgb(75, 91, 158) 100%);
+    background: -moz-linear-gradient(45deg, hsla(120, 6%, 90%, 1) 0%, rgb(75, 91, 158) 100%);
+    background: -webkit-linear-gradient(45deg, hsla(120, 6%, 90%, 1) 0%, rgb(75, 91, 158) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#E4E7E4", endColorstr="#0A1647", GradientType=1);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 input {
@@ -32,12 +39,16 @@ input {
     margin-top: 20px;
 }
 
+#cityInput {
+    border-radius: 5px;
+}
+
 button {
     background: #76ABAE;
     color: white;
     padding: 10px;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
     width: 100px;
@@ -68,5 +79,10 @@ button:hover {
 
 p {
     color: #fff;
-    font-size:medium
+    font-size: medium
+}
+
+#invalidInput {
+    display: none;
+    color: #fff;
 }
